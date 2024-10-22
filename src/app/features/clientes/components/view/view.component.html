@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="row">
+    <div class="col text-start"><h5>Cliente</h5></div>
+    <div class="col"></div>
+  </div>
+  <div *ngIf="cliente" class="row mt-2">
+    <div class="col-4"></div>
+    <div class="col-4">
+      <div>
+        <label class="form-label">Nombre</label>
+        <input
+          type="text"
+          class="form-control form-control-sm rounded-3 shadow-none"
+          value="{{ cliente.nombre }}"
+          readonly
+        />
+      </div>
+      <div class="mt-2">
+        <label class="form-label">Apellidos</label>
+        <input
+          type="text"
+          class="form-control form-control-sm rounded-3 shadow-none"
+          value="{{ cliente.apellido }}"
+          readonly
+        />
+      </div>
+      <div class="mt-2">
+        <label class="form-label">Email</label>
+        <input
+          type="text"
+          class="form-control form-control-sm rounded-3 shadow-none"
+          value="{{ cliente.email }}"
+          readonly
+        />
+      </div>
+      <div class="mt-2">
+        <label class="form-label">Telefono</label>
+        <input
+          type="text"
+          class="form-control form-control-sm rounded-3 shadow-none"
+          value="{{ cliente.telefono }}"
+          readonly
+        />
+      </div>
+      <div class="mt-2">
+        <label class="form-label">Direccion</label>
+        <input
+          type="text"
+          class="form-control form-control-sm rounded-3 shadow-none"
+          value="{{ cliente.direccion }}"
+          readonly
+        />
+      </div>
+      <div class="mt-2">
+        <label class="form-label">Fecha de creacion</label>
+        <input
+          type="text"
+          class="form-control form-control-sm rounded-3 shadow-none"
+          value="{{ cliente.fechaRegistro | date : 'yyyy-MM-dd HH:mm:ss' }}"
+          readonly
+        />
+      </div>
+      <div class="row mt-2">
+        <div class="col-6">
+          <a [routerLink]="['/cliente']" class="btn btn-dark-c"
+            ><i class="bi bi-arrow-return-left"></i> Cancelar</a
+          >
+        </div>
+        <div class="col-6"></div>
+      </div>
+    </div>
+  </div>
+  <div class="col-4"></div>
+</div>

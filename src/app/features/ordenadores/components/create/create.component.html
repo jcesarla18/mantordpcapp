@@ -1,0 +1,70 @@
+<div class="container">
+  <div class="row">
+    <div class="col text-center"><h5>Agregar Ordenador</h5></div>
+  </div>
+  <div class="row">
+    <div class="col-4"></div>
+    <div class="col-4">
+      <form [formGroup]="formOrdernadores" (submit)="onSaved()">
+        <div>
+          <label class="form-label">Marca</label>
+          <select class="form-select" formControlName="marca">
+            <option selected>--seleccione--</option>
+            <option
+              *ngFor="let marca of marcasOrdenadores"
+              value="{{ marca.name }}">
+              {{ marca.name }}
+            </option>
+          </select>
+          <div
+            class="text-start"
+            *ngIf="
+              formOrdernadores.get('marca')?.invalid &&
+              formOrdernadores.get('marca')?.touched
+            ">
+            <p class="small text-warning">Seleccione la marca</p>
+          </div>
+        </div>
+        <div class="mt-2">
+          <label class="form-label">Modelo</label>
+          <input
+            type="text"
+            class="form-control shadow-none"
+            formControlName="modelo" />
+        </div>
+        <div class="mt-2">
+          <label class="form-label">Numero de serie</label>
+          <input
+            type="text"
+            class="form-control shadow-none"
+            formControlName="numeroSerie" />
+        </div>
+        <div class="mt-2">
+          <label class="form-label">Fecha de compra</label>
+          <input
+            type="date"
+            class="form-control shadow-none"
+            formControlName="fechaCompra" />
+        </div>
+        <div class="row mt-4">
+          <div class="col-6 text-">
+            <a [routerLink]="['/ordenadores']" class="btn btn-dark-c">
+              <i class="bi bi-arrow-return-left"></i>
+              Cancelar
+            </a>
+          </div>
+          <div class="col-6 text-end">
+            <button
+              type="submit"
+              class="btn btn-dark-c btn-sm"
+              [disabled]="formOrdernadores.invalid">
+              <i class="bi bi-save"></i>
+              Save
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-4"></div>
+  </div>
+</div>

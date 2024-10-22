@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* button */
+.btn-dark-c {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: #212529;
+  --bs-btn-focus-shadow-rgb: 66, 70, 73;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-border-color: #373b3e;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: #212529;
+  --bs-btn-disabled-border-color: #212529;
+}
+
+/* item btn accion list */
+.accion-link {
+  text-decoration: none;
+  color: white;
+  transition: transform 2s ease-in-out;
+}

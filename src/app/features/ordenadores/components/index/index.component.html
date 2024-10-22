@@ -1,0 +1,109 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col text-start">
+      <h5>Ordernadores</h5>
+    </div>
+    <div class="col text-end">
+      <a href="#" class="btn btn-dark-c" [routerLink]="['/ordenadores/create']">
+        <i class="bi bi-pc-display"></i>
+        Agregar ordenador
+      </a>
+    </div>
+  </div>
+  <div class="row mt-2">
+    <div class="col-auto text-start">
+      <input
+        type="text"
+        placeholder="Buscar..."
+        class="form-control form-control-sm"
+        [formControl]="searchControl" />
+    </div>
+  </div>
+  <div class="row mt-2">
+    <div class="col">
+      <table class="table table-hover table-responsive table-sm">
+        <thead>
+          <tr>
+            <th>Nº</th>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>Numero de Serie</th>
+            <th>Fecha de compra</th>
+            <th>Fecha Creacion</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="
+              let item of filtroOrdenadores
+                | paginate
+                  : {
+                      itemsPerPage: itemsPerPage,
+                      currentPage: currentPage
+                    };
+              let indice = index
+            ">
+            <td>{{ indice + 1 }}</td>
+            <td>{{ item.marca }}</td>
+            <td>{{ item.modelo }}</td>
+            <td>
+              {{ item.numeroSerie === null ? 's/ n.' : item.numeroSerie }}
+            </td>
+            <td>
+              {{
+                item.fechaCompra === null
+                  ? 's/ fecha.'
+                  : (item.fechaCompra | date : 'yyyy-MM-dd HH:mm:ss-SS')
+              }}
+            </td>
+            <td>
+              {{ item.fechaRegistro | date : 'yyyy-MM-dd HH:mm:ss-SS' }}
+            </td>
+            <td>
+              <div class="dropdown">
+                <a
+                  href="#!"
+                  class="bi bi-gear-fill accion-link"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"></a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      title="seleccionar"
+                      [routerLink]="['view/', item.ordenadorId]">
+                      <i class="bi bi-hand-index-fill"></i>
+                      View
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      title="editar"
+                      [routerLink]="['edit/', item.ordenadorId]">
+                      <i class="bi bi-pencil-fill"></i>
+                      Editar
+                    </a>
+                  </li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      title="eleminar"
+                      (click)="deleteOrdenador(item.ordenadorId)">
+                      <i class="bi bi-trash-fill"></i>
+                      Delete
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <pagination-controls
+        (pageChange)="currentPage = $event"></pagination-controls>
+    </div>
+  </div>
+</div>

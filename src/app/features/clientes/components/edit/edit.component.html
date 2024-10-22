@@ -1,0 +1,99 @@
+<div class="container">
+  <div class="row">
+    <div class="col text-start"><h5>Editar Cliente</h5></div>
+    <div class="col"></div>
+  </div>
+  <form [formGroup]="clienteForm" (ngSubmit)="onSubmit()">
+    <div class="row mt-2">
+      <div class="col-4"></div>
+      <div class="col-4">
+        <div>
+          <label class="form-label">Nombre</label>
+          <input
+            type="text"
+            class="form-control form-control-sm rounded-3 shadow-none"
+            formControlName="nombre" />
+          <div
+            class=""
+            *ngIf="
+              clienteForm.get('nombre')?.invalid &&
+              clienteForm.get('nombre')?.touched
+            ">
+            <span
+              class="fst-italic text-warning text-wrap"
+              style="font-size: 0.8rem">
+              Ingrese su nombre
+            </span>
+          </div>
+        </div>
+        <div class="mt-2">
+          <label class="form-label">Apellidos</label>
+          <input
+            type="text"
+            class="form-control form-control-sm rounded-3 shadow-none"
+            formControlName="apellido" />
+        </div>
+        <div class="mt-2">
+          <label class="form-label">Email</label>
+          <input
+            type="text"
+            class="form-control form-control-sm rounded-3 shadow-none"
+            formControlName="email"
+            readonly />
+          <div
+            class=""
+            *ngIf="
+              clienteForm.get('email')?.invalid &&
+              clienteForm.get('email')?.touched
+            ">
+            <span
+              class="fst-italic text-warning text-wrap"
+              style="font-size: 0.8rem">
+              Ingrese su email
+            </span>
+          </div>
+        </div>
+        <div class="mt-2">
+          <label class="form-label">Telefono</label>
+          <input
+            type="text"
+            class="form-control form-control-sm rounded-3 shadow-none"
+            formControlName="telefono" />
+        </div>
+        <div class="mt-2">
+          <label class="form-label">Direccion</label>
+          <input
+            type="text"
+            class="form-control form-control-sm rounded-3 shadow-none"
+            formControlName="direccion" />
+        </div>
+        <div class="mt-2">
+          <label class="form-label">Fecha de creacion</label>
+          <input
+            type="datetime-local"
+            class="form-control form-control-sm rounded-3 shadow-none"
+            formControlName="fechaRegistro"
+            readonly />
+        </div>
+        <div class="row mt-4">
+          <div class="col-6 text-start">
+            <a [routerLink]="['/cliente']" class="btn btn-dark-c">
+              <i class="bi bi-arrow-return-left"></i>
+              Cancelar
+            </a>
+          </div>
+          <div class="col-6 text-end">
+            <button
+              class="btn btn-dark-c"
+              type="submit"
+              [disabled]="clienteForm.invalid">
+              <i class="bi bi-pencil-square"></i>
+              Editar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div class="col-4"></div>
+</div>

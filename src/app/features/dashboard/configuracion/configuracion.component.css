@@ -1,0 +1,35 @@
+.circulo {
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  background: silver;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 0px auto;
+  padding: 3%;
+}
+
+.circulo > h5 {
+  color: black;
+  font-size: 4rem;
+  font-weight: bold;
+}
+.button-tab {
+  font-size: 1rem;
+  margin: 2px 0 2px 0;
+}
+.button-tab:hover {
+  background-color: #0d6efd;
+  color: white;
+}
+.t-card-perfil {
+  font-size: 0.8rem;
+  margin: 0px;
+  padding: 0px;
+}
+.d-card-perfil {
+  margin-bottom: 2px;
+  font-weight: bold;
+}

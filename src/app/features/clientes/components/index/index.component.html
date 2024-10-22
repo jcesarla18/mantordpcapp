@@ -1,0 +1,103 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col text-start fw-bold"><h5>Clientes</h5></div>
+    <div class="col text-end">
+      <a href="#" class="btn btn-dark-c" [routerLink]="['/cliente/create']">
+        <i class="bi bi-person-fill-add"></i>
+        Agregar Cliente
+      </a>
+    </div>
+  </div>
+  <div class="row mt-2">
+    <div class="col-auto text-start">
+      <input
+        type="text"
+        placeholder="Buscar..."
+        class="form-control form-control-sm"
+        [formControl]="searchControl" />
+    </div>
+  </div>
+  <div class="row mt-2">
+    <div class="col">
+      <table class="table table-hover table-responsive table-sm">
+        <thead>
+          <tr>
+            <th>Nº</th>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Telefono</th>
+            <th>Direccion</th>
+            <th>Fecha Creacion</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="
+              let item of filtroClientes
+                | paginate
+                  : {
+                      itemsPerPage: itemsPerPage,
+                      currentPage: currentPage
+                    };
+              let indice = index
+            ">
+            <td>{{ indice + 1 }}</td>
+            <td>{{ item.nombre }} {{ item.apellido }}</td>
+            <td>{{ item.email }}</td>
+            <td>
+              {{ item.telefono === null ? 's/ telf.' : item.telefono }}
+            </td>
+            <td>
+              {{ item.direccion === null ? 's/ Dir.' : item.direccion }}
+            </td>
+            <td>
+              {{ item.fechaRegistro | date : 'yyyy-MM-dd HH:mm:ss-SS' }}
+            </td>
+            <td>
+              <div class="dropdown">
+                <a
+                  href="#!"
+                  class="bi bi-gear-fill accion-link"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"></a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      title="seleccionar"
+                      [routerLink]="['view/', item.clienteId]">
+                      <i class="bi bi-hand-index-fill"></i>
+                      View
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      title="editar"
+                      [routerLink]="['edit/', item.clienteId]">
+                      <i class="bi bi-pencil-fill"></i>
+                      Editar
+                    </a>
+                  </li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <!-- <li>
+                    <a
+                      class="dropdown-item"
+                      title="eleminar"
+                      (click)="deleteClient(item.clienteId)">
+                      <i class="bi bi-trash-fill"></i>
+                      Delete
+                    </a>
+                  </li> -->
+                </ul>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <pagination-controls
+        (pageChange)="currentPage = $event"></pagination-controls>
+    </div>
+  </div>
+</div>

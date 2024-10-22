@@ -1,0 +1,69 @@
+<div *ngIf="usuario" class="container mt-2">
+  <div><h4 class="fw-bold">Detalles</h4></div>
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+      <div class="row mt-2">
+        <div class="col-md-3">
+          <label class="form-label">Nombre:</label>
+        </div>
+        <div class="col-md-9">
+          <input
+            type="text"
+            class="form-control form-control-sm"
+            value="{{ usuario.nombre }}"
+            readonly
+          />
+        </div>
+      </div>
+
+      <div class="row mt-2">
+        <div class="col-md-3">
+          <label class="form-label">Email:</label>
+        </div>
+        <div class="col-md-9">
+          <input
+            type="text"
+            class="form-control form-control-sm"
+            value="{{ usuario.email }}"
+            readonly
+          />
+        </div>
+      </div>
+
+      <div class="row mt-2">
+        <div class="col-md-3">
+          <label class="form-label">rol:</label>
+        </div>
+        <div class="col-md-3">
+          <input
+            type="text"
+            class="form-control form-control-sm"
+            value="{{ usuario.rol }}"
+            readonly
+          />
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">Fecha de registro:</label>
+        </div>
+        <div class="col-md-3">
+          <input
+            type="datetime"
+            class="form-control form-control-sm"
+            value="{{ usuario.fechaCreacion | date : 'yyyy-MM-dd' }}"
+            readonly
+          />
+        </div>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col-auto text-start">
+          <a class="btn btn-dark-c btn-sm" [routerLink]="['/usuario']"
+            ><i class="bi bi-arrow-return-left"></i> Regresar</a
+          >
+        </div>
+      </div>
+    </div>
+    <div class="col-3"></div>
+  </div>
+</div>

@@ -1,0 +1,319 @@
+<div class="container mt-2">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="card border-success vh-100">
+        <div class="card-body">
+          <div class="circulo m-auto">
+            <h5>JL</h5>
+          </div>
+          <div class="mt-2">
+            <div class="text-center">
+              <h6>{{ nombre }} {{ apellidos }}</h6>
+            </div>
+            <div
+              class="nav flex-column text-start nav-pills me-3 mt-4"
+              id="v-pills-tab"
+              role="tablist"
+              aria-orientation="vertical">
+              <button
+                class="nav-link active button-tab"
+                id="v-pills-publico-tab"
+                data-bs-toggle="pill"
+                data-bs-target="#v-pills-publico"
+                type="button"
+                role="tab"
+                aria-controls="v-pills-publico"
+                aria-selected="true">
+                Perfil publico
+              </button>
+              <button
+                (click)="getDataUsuario()"
+                class="nav-link button-tab"
+                id="v-pills-perfil-tab"
+                data-bs-toggle="pill"
+                data-bs-target="#v-pills-perfil"
+                type="button"
+                role="tab"
+                aria-controls="v-pills-perfil"
+                aria-selected="true">
+                Mi Perfil
+              </button>
+              <button
+                class="nav-link button-tab"
+                id="v-pills-seguridad-tab"
+                data-bs-toggle="pill"
+                data-bs-target="#v-pills-seguridad"
+                type="button"
+                role="tab"
+                aria-controls="v-pills-seguridad"
+                aria-selected="false">
+                Seguridad de la Cuenta
+              </button>
+              <button
+                class="nav-link button-tab"
+                id="v-pills-notificaciones-tab"
+                data-bs-toggle="pill"
+                data-bs-target="#v-pills-notificaciones"
+                type="button"
+                role="tab"
+                aria-controls="v-pills-notificaciones"
+                aria-selected="false">
+                Notificaciones
+              </button>
+              <hr />
+              <button
+                class="nav-link button-tab"
+                id="v-pills-session-tab"
+                data-bs-toggle="pill"
+                data-bs-target="#v-pills-session"
+                (click)="closeSession()"
+                type="button">
+                Cerrar Session
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="card border-success vh-100">
+        <div class="card-header text-center border-success">
+          <h3>Perfil Publico</h3>
+          <p>Informacion Adicional</p>
+        </div>
+        <div class="card-body">
+          <div class="tab-content" id="v-pills-tabContent">
+            <div
+              class="tab-pane fade show active"
+              id="v-pills-publico"
+              role="tabpanel"
+              aria-labelledby="v-pills-publico-tab"
+              tabindex="0">
+              <div class="row justify-content-md-center">
+                <div class="col-6">
+                  <div class="card border-success p-2">
+                    <div class="row">
+                      <div class="col-md-4 text-center">
+                        <img
+                          src="../../../assets/image/usuario.png"
+                          alt=""
+                          width="100%" />
+                        <p class="d-card-perfil">{{ rol }}</p>
+                      </div>
+                      <div class="col-md-8 p-1">
+                        <p class="t-card-perfil">Nombres</p>
+                        <p class="d-card-perfil">
+                          {{ nombre }}
+                        </p>
+                        <p class="t-card-perfil">Apellidos</p>
+                        <p class="d-card-perfil">
+                          {{ apellidos }}
+                        </p>
+                        <p class="t-card-perfil">Email</p>
+                        <p class="d-card-perfil">{{ email }}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="tab-pane fade"
+              id="v-pills-perfil"
+              role="tabpanel"
+              aria-labelledby="v-pills-perfil-tab"
+              tabindex="0">
+              <form
+                [formGroup]="formConfiguracion"
+                (ngSubmit)="updateDataUsuario()">
+                <div class="row justify-content-md-center">
+                  <div class="col-md-5 align-self-center">
+                    <div class="form-floating mb-1">
+                      <input
+                        type="text"
+                        class="form-control shadow-none"
+                        id="floatingInputNombre"
+                        placeholder="nombre"
+                        formControlName="nombre" />
+                      <label for="floatingInputNombre">Nombre</label>
+                    </div>
+                    <div class="form-floating mb-1">
+                      <input
+                        type="text"
+                        class="form-control shadow-none"
+                        id="floatingInputApellidos"
+                        placeholder="apellidos"
+                        formControlName="apellido" />
+                      <label for="floatingInputApellidos">Apellidos</label>
+                    </div>
+                    <div class="form-floating mb-1">
+                      <input
+                        type="email"
+                        class="form-control shadow-none"
+                        id="floatingInputEmail"
+                        placeholder="Email"
+                        formControlName="email" />
+                      <label for="floatingInputEmail">Email</label>
+                    </div>
+                    <div class="form-floating mb-1">
+                      <input
+                        type="tel"
+                        class="form-control shadow-none"
+                        id="floatingInputTelefono"
+                        placeholder="telefono"
+                        formControlName="telefono" />
+                      <label for="floatingInputTelefono">Telefono</label>
+                    </div>
+                    <div class="form-floating mb-1">
+                      <input
+                        type="tel"
+                        class="form-control shadow-none"
+                        id="floatingInputDireccion"
+                        placeholder="apellidos"
+                        formControlName="direccion" />
+                      <label for="floatingInputDireccion">Direccion</label>
+                    </div>
+                    <div class="row mt-3">
+                      <div class="col text-center">
+                        <button class="btn btn-dark-c" type="submit">
+                          <i class="bi bi-pencil-square"></i>
+                          Actualizar
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div
+              class="tab-pane fade"
+              id="v-pills-seguridad"
+              role="tabpanel"
+              aria-labelledby="v-pills-seguridad-tab"
+              tabindex="0">
+              <form
+                [formGroup]="formChangePassword"
+                (ngSubmit)="changePassword()">
+                <div class="row justify-content-md-center">
+                  <div class="col-md-5 align-self-center">
+                    <div class="form-floating mb-1">
+                      <input
+                        type="password"
+                        class="form-control"
+                        formControlName="password"
+                        id="floatingInputContrasena"
+                        (change)="checkPassword()"
+                        placeholder="Contraseña Actual" />
+                      <div
+                        class="text-start"
+                        *ngIf="
+                          formChangePassword.get('password')?.invalid &&
+                          formChangePassword.get('password')?.touched
+                        ">
+                        <p class="small text-warning">
+                          Ingrese la contraseña actual
+                        </p>
+                      </div>
+                      <div class="text-start" *ngIf="passwordIsValid">
+                        <p class="small text-success">¡Contraseña correcta!</p>
+                      </div>
+                      <div
+                        class="text-start"
+                        *ngIf="
+                          !passwordIsValid &&
+                          formChangePassword.get('password')?.dirty
+                        ">
+                        <p class="small text-warning">Contraseña incorrecta.</p>
+                      </div>
+
+                      <label for="floatingInputContrasena">
+                        Contraseña actual
+                      </label>
+                    </div>
+                    <div class="form-floating mb-1">
+                      <input
+                        type="password"
+                        class="form-control"
+                        formControlName="newPassword"
+                        id="floatingInputNuevaContrasena"
+                        placeholder="Nueva contraseña" />
+                      <div
+                        class="text-start"
+                        *ngIf="
+                          formChangePassword.get('newPassword')?.invalid &&
+                          formChangePassword.get('newPassword')?.touched
+                        ">
+                        <p class="small text-warning">
+                          ingrese la nueva contraseña
+                        </p>
+                      </div>
+                      <div
+                        *ngIf="
+                          formChangePassword.controls.newPassword.getError(
+                            'minlength'
+                          ) || !formChangePassword.controls.newPassword.value
+                        "
+                        class="requisito">
+                        <p class="small text-warning">- Mínimo 8 caracteres</p>
+                      </div>
+                      <label for="floatingInputNuevaContrasena">
+                        Nueva Contraseña
+                      </label>
+                    </div>
+                    <div class="form-floating mb-1">
+                      <input
+                        type="password"
+                        class="form-control"
+                        formControlName="repeatPassword"
+                        id="floatingInputRepetirContrasena"
+                        placeholder="Repetir contraseña" />
+                      <div
+                        class="text-start"
+                        *ngIf="
+                          formChangePassword.get('repeatPassword')?.invalid &&
+                          formChangePassword.get('repeatPassword')?.touched
+                        ">
+                        <p class="small text-warning">
+                          repita la contraseña nueva
+                        </p>
+                      </div>
+                      <div
+                        *ngIf="formChangePassword.getError('mustBeEqual')"
+                        class="requisito">
+                        <p class="small text-warning">
+                          - No coinciden las contraseñas
+                        </p>
+                      </div>
+                      <label for="floatingInputRepetirContrasena">
+                        Repetir nueva contraseña
+                      </label>
+                    </div>
+                    <div class="row mt-3">
+                      <div class="col text-center">
+                        <button
+                          [disabled]="formChangePassword.invalid"
+                          type="submit"
+                          class="btn btn-dark-c">
+                          <i class="bi bi-pencil-square"></i>
+                          Cambiar contraseña
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div
+              class="tab-pane fade"
+              id="v-pills-notificaciones"
+              role="tabpanel"
+              aria-labelledby="v-pills-notificaciones-tab"
+              tabindex="0">
+              <h5>Notificaciones</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

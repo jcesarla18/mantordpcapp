@@ -1,0 +1,96 @@
+<div class="container">
+  <div class="card-body">
+    <div class="card-header"></div>
+    <form [formGroup]="formularioUsuario" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+          <div class="mt-2">
+            <label class="form-label" for="nombre">Nombre</label>
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              formControlName="nombre" />
+            <div
+              class="text-center"
+              *ngIf="
+                formularioUsuario.get('nombre')?.invalid &&
+                formularioUsuario.get('nombre')?.touched
+              ">
+              <p class="small text-warning text.ce">el nombre es requerido!</p>
+            </div>
+          </div>
+
+          <div class="mt-2">
+            <label class="form-label">Email</label>
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              formControlName="email" />
+            <div
+              class="text-center"
+              *ngIf="
+                formularioUsuario.get('email')?.invalid &&
+                formularioUsuario.get('email')?.touched
+              ">
+              <p class="small text-warning">El email es requerido!</p>
+            </div>
+          </div>
+
+          <div class="mt-2">
+            <label class="form-label">Contraseña</label>
+            <input
+              type="password"
+              class="form-control form-control-sm"
+              formControlName="contrasena" />
+            <div
+              class="text-center"
+              *ngIf="
+                formularioUsuario.get('contrasena')?.invalid &&
+                formularioUsuario.get('contrasena')?.touched
+              ">
+              <p class="small text-warning">la contraseña es requerida!</p>
+            </div>
+          </div>
+
+          <div class="mt-2">
+            <label class="form-label">Rol</label>
+            <select class="form-select form-select-sm" formControlName="rol">
+              <option selected>seleccione</option>
+              <option value="default">default</option>
+              <option value="user">user</option>
+              <option value="admin">admin</option>
+            </select>
+            <div
+              class="text-center"
+              *ngIf="
+                formularioUsuario.get('rol')?.invalid &&
+                formularioUsuario.get('rol')?.touched
+              ">
+              <p class="small text-warning">seleccione un rol</p>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col text-start">
+              <a [routerLink]="['/usuario']" class="btn btn-dark-c btn-sm">
+                <i class="bi bi-arrow-return-left"></i>
+                Cancel
+              </a>
+            </div>
+            <div class="col text-end">
+              <button
+                type="submit"
+                [disabled]="formularioUsuario.invalid"
+                class="btn btn-dark-c btn-sm">
+                <i class="bi bi-pencil-square"></i>
+                Editar
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-4"></div>
+      </div>
+    </form>
+  </div>
+</div>
